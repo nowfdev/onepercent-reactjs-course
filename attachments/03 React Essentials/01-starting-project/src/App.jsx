@@ -2,8 +2,13 @@ import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 import { CORE_CONCEPTS } from "../../data.js";
+import { useState } from "react";
 
 function App() {
+  const [content, setContent] = useState("Nowf");
+  function handleSelect(btnSelected) {
+    setContent(btnSelected);
+  }
   return (
     <div>
       <Header />
@@ -24,8 +29,14 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Com</TabButton>
+            <TabButton onSelect={() => handleSelect("component")}>
+              Component
+            </TabButton>
+            <TabButton onSelect={() => handleSelect("jsx")}>Jsx</TabButton>
+            <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
+            <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
+          {content}
         </section>
       </main>
     </div>
