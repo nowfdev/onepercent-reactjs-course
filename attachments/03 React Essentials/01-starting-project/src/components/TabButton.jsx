@@ -1,12 +1,14 @@
 import React from "react";
 
 const TabButton = (props) => {
-  function clickHandler() {
-    console.log("Hello World");
-  }
   return (
     <li>
-      <button onClick={props.onSelect}>{props.children}</button>
+      <button
+        className={props.isSelected ? "active" : undefined}
+        onClick={props.onSelect}
+      >
+        {props.children}
+      </button>
     </li>
   );
 };
